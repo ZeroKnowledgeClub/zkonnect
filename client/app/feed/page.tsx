@@ -11,7 +11,7 @@ const provider_options = {
   }
 };
 
-let web3modal;
+let web3modal: Web3Modal;
 if (typeof window !== "undefined") {
   web3modal = new Web3Modal({
     network: "mainnet",

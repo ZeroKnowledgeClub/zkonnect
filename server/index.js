@@ -2,13 +2,14 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs").promises;
 const app = express();
+const cors=require("cors")
 const EC = require("elliptic").ec;
 const { exec, execSync } = require("child_process");
 const { log } = require("console");
 const ec = new EC("secp256k1");
 const port = 3000;
 app.use(express.json());
-
+app.use(cors())
 function preparePrivateKeyHex(privateKeyHex, n, k) {
   const privateKeyInt = BigInt("0x" + privateKeyHex);
   const mask = (BigInt(1) << BigInt(n)) - BigInt(1);
