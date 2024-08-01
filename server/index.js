@@ -7,7 +7,7 @@ const EC = require("elliptic").ec;
 const { exec, execSync } = require("child_process");
 const { log } = require("console");
 const ec = new EC("secp256k1");
-const port = 3000;
+const port = 3003;
 app.use(express.json());
 app.use(cors())
 function preparePrivateKeyHex(privateKeyHex, n, k) {
