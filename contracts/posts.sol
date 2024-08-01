@@ -2,13 +2,20 @@
 pragma solidity >=0.8.19;
 
 contract Posts {
-    mapping(string => string) private pubKeyToDisplayName;
+    mapping(string => string) private  pubKeyToDisplayName;
+    mapping(string => string) private displayNameToPubKey;
 
     function setpubKeyToDisplayName(
         string memory displayName,
         string memory public_key
     ) public {
         require(bytes(displayName).length > 0, "Display name not set");
+        require(
+        bytes(displayNameToPubKey[displayName]).length == 0,
+        "Display name already taken"
+        );
+
+        displayNameToPubKey[displayName] = public_key;
         pubKeyToDisplayName[public_key] = displayName; //Address of the account that called mapped to its display name
     }
 
@@ -25,7 +32,6 @@ contract Posts {
         uint256 postTime;
         string CIDHash;
         uint256 Reward; //Initialises with value 0
-        //string flair; What else can be added?
     }
     mapping(string => Post[]) private userPosts;
     mapping(uint256 => string) private PostToUser;
@@ -70,4 +76,10 @@ contract Posts {
         require(success, "Transfer failed.");
         allPosts[postId].Reward = 0;
     }
+
+    function Hello() public pure returns(string memory){
+        return "Hello from Contract";
+    }
 }
+
+
