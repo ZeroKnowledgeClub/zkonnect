@@ -1,0 +1,233 @@
+[
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "postIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "postTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "CIDHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Reward",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Posts.Post",
+				"name": "post",
+				"type": "tuple"
+			},
+			{
+				"internalType": "string",
+				"name": "displayName",
+				"type": "string"
+			}
+		],
+		"name": "createPost",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "postId",
+				"type": "uint256"
+			}
+		],
+		"name": "sendRewardToPost",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "displayName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "public_key",
+				"type": "string"
+			}
+		],
+		"name": "setpubKeyToDisplayName",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "displayName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "postId",
+				"type": "uint256"
+			}
+		],
+		"name": "withdrawReward",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "allPosts",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "postIndex",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "postTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "CIDHash",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "Reward",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllPosts",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "postIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "postTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "CIDHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Reward",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Posts.Post[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "public_key",
+				"type": "string"
+			}
+		],
+		"name": "getDisplayName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "displayName",
+				"type": "string"
+			}
+		],
+		"name": "getUserPosts",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "postIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "postTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "CIDHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Reward",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Posts.Post[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "Hello",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	}
+]

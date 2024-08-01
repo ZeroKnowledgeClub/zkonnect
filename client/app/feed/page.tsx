@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Web3Modal from "web3modal";
 import Web3 from "web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import "./ipfs"
+import { ConnectKitButton } from 'connectkit';
+
 
 const provider_options = {
   walletconnect: {
@@ -43,8 +46,8 @@ const Page: React.FC = () => {
 
   return (
     <div>
-      <button onClick={connectWallet}>Connect</button>
-    </div>
+ <ConnectKitButton />   
+  </div>
   );
 };
 
