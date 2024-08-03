@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
 import { cn } from "../../lib/utils";
-import { useReadContract, useReadContracts } from 'wagmi';
-import { wagmiConfig } from '@/context/config';
-import { writeContract } from '@wagmi/core'
-import { config } from '../../context/web3context'
+import { useReadContract, useReadContracts } from "wagmi";
+import { wagmiConfig } from "@/context/config";
+import { writeContract } from "@wagmi/core";
+import { config } from "../../context/web3context";
 
 import {
   IconBrandGithub,
@@ -18,12 +18,10 @@ import { HeroHighlight, Highlight } from "../../components/ui/hero-hightlight";
 import axios from "axios";
 import { log } from "console";
 
-
 export default function SignupFormDemo() {
-
-  const [publicKey, setPublic_key] = useState<string>("")
-  const [privateKey, setPrivateKey] = useState("")
-  const [displayName, setDisplayName] = useState("")
+  const [publicKey, setPublic_key] = useState<string>("");
+  const [privateKey, setPrivateKey] = useState("");
+  const [displayName, setDisplayName] = useState("");
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log("Form submitted");
@@ -34,67 +32,65 @@ export default function SignupFormDemo() {
         const { public_key } = res.data;
         if (publicKey == "") {
           console.log("updating");
-          setPublic_key(public_key)
+          setPublic_key(public_key);
         } else {
-
-          console.log("Already setted", publicKey)
+          console.log("Already setted", publicKey);
         }
-        console.log("Hello from server44")
-
+        console.log("Hello from server44");
       })
       .catch((err) => console.log(err));
   }
 
   useEffect(() => {
     console.log("public key chnages", publicKey);
-
-  }, [publicKey])
+  }, [publicKey]);
   interface PrivateComponentProps {
     publicKey: string;
     displayName: string;
     privateKey: string; // Sensitive information should be handled with caution
   }
 
-  const PrivateComponent: React.FC<PrivateComponentProps> = ({ publicKey, displayName, privateKey }) => {
+  const PrivateComponent: React.FC<PrivateComponentProps> = ({
+    publicKey,
+    displayName,
+    privateKey,
+  }) => {
     const [result, setResult] = useState<any>(null);
     const hasWritten = useRef(false); // Track if the write function has been called
-  
+
     useEffect(() => {
       const writeData = async () => {
         try {
-          const result = await writeContract(config,{
+          const result = await writeContract(config, {
             abi: wagmiConfig.abi,
             address: wagmiConfig.address,
-            functionName: 'setpubKeyToDisplayName',
+            functionName: "setpubKeyToDisplayName",
             args: [displayName, publicKey],
           });
-  
+
           if (!result) {
             setResult(result);
           }
           console.log(result);
         } catch (error) {
-          alert("Display Name already Taken or low Balance")
-  
+          alert("Display Name already Taken or low Balance");
         }
       };
-  
+
       if (publicKey && displayName && !hasWritten.current) {
         writeData();
         hasWritten.current = true; // Set the flag to true to prevent further calls
       }
     }, [publicKey, displayName]);
-  
+
     return (
-      <div>
+      <div className="w-100% text-sm">
         <div>{publicKey}</div>
         <div>{displayName}</div>
         <div>{privateKey}</div>
       </div>
-    ) ;
+    );
   };
-  
-  
 
   return (
     <div className="min-h-screen relative">
@@ -122,7 +118,13 @@ export default function SignupFormDemo() {
             <form className="my-8" onSubmit={handleSubmit}>
               <LabelInputContainer className="mb-4">
                 <Label htmlFor="username">Username</Label>
-                <Input id="username" placeholder="Username" type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+                <Input
+                  id="username"
+                  placeholder="Username"
+                  type="text"
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                />
               </LabelInputContainer>
               {/* <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
@@ -136,12 +138,18 @@ export default function SignupFormDemo() {
                 <BottomGradient />
               </button>
             </form>
-            {publicKey && < PrivateComponent publicKey={publicKey} displayName={displayName} privateKey={privateKey} />}
           </div>
+            <div>
+              {publicKey && (
+                <PrivateComponent
+                  publicKey={publicKey}
+                  displayName={displayName}
+                  privateKey={privateKey}
+                />
+              )}
+            </div>
         </motion.h1>
       </HeroHighlight>
-
-
     </div>
   );
 }
