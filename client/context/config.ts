@@ -1,5 +1,5 @@
 import abi from "../abi/abi.json"
 export const wagmiConfig={
-    address:"0x9b3c612e80Bb2F05913071E6570f5D6eA06d91E2",
+    address:"0x959E2dF44884F30f83989E21FdB2Deece69B10bD",
     abi:abi
 } as const

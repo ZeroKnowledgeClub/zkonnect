@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import abi from '../../abi/abi.json'
+import abi from './abi/abi.json'
 import { useReadContract } from 'wagmi';
 import { wagmiConfig } from '@/context/config';
 
